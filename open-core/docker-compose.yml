@@ -24,7 +24,7 @@ services:
     restart: "on-failure"
 
   graylog:
-    image: "graylog/graylog:4.2"
+    image: "graylog/graylog:4.3"
     depends_on:
       elasticsearch:
         condition: "service_started"
@@ -39,6 +39,7 @@ services:
       GRAYLOG_HTTP_EXTERNAL_URI: "http://localhost:9000/"
       GRAYLOG_ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
       GRAYLOG_MONGODB_URI: "mongodb://mongodb:27017/graylog"
+      GRAYLOG_DISABLE_NATIVE_SYSTEM_STATS_COLLECTOR: "true"
     ports:
     - "5044:5044/tcp"   # Beats
     - "5140:5140/udp"   # Syslog
